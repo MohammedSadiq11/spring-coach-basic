@@ -7,8 +7,13 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 	
+	<bean id="myFortune"
+		  class="com.firstapp.spring.HelloFortuneService">
+	</bean>
+	
 	<bean id="myCoach"
-		  class="com.firstapp.spring.BaseballCoach">
+		  class="com.firstapp.spring.TrackCoach">
+		  <constructor-arg ref="myFortune" />
 	</bean>
 
 </beans>
