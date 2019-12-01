@@ -7,18 +7,27 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 	
+	<!-- load the properties file in the config file -->
+	<context:property-placeholder location="classpath:sport.properties" />
+	
 	<bean id="myFortuneService"
 		  class="com.firstapp.spring.HelloFortuneService">
 	</bean>
 	
+	<!-- dependency injection using constructor -->
 	<bean id="myCoach"
 		  class="com.firstapp.spring.TrackCoach">
 		  <constructor-arg ref="myFortuneService"/>
 	</bean>
 	
+	<!-- Dependency injection using setter method -->
 	<bean id="myCricketCoach"
 		  class="com.firstapp.spring.CricketCoach">
 		  <property name="fortuneService" ref="myFortuneService"/>
+		  
+		  <!-- injection of literal values -->
+		  <property name="emailAddress" value="${foo.email}" />
+		  <property name="team" value="${foo.team}" />
 	</bean>
 
 </beans>
